@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>KAV | My Games</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <header>
+    <div class="header">
+      <nav>
+        <hr>
+        <a href="index.html">Back to Homepage</a>
+        <hr>
+      </nav>
+    </div>
+  </header>
+
+  <script type="text/java">
+    import java.util.Scanner;
+
+public class GuessingGameDriver {
+
+	public static void GuessingGame() {
+		Scanner scan = new Scanner(System.in);
+
+		// generate the random number
+		int number = 1 + (int)(13 * Math.random());
+
+		//K trials to guess the number
+		int K = 3;
+
+		int i, guess;
+
+		System.out.println("A random number is generated between 1-13 and you will have three trys to guess the number. Hints will be given along the way. Good luck...");
+
+		// iterate over there guesses
+		for(i = 0; i<K; i++) {
+			System.out.println("What is your guess?");
+
+			guess = scan.nextInt();
+
+			if(number == guess) {
+				System.out.println("CONGRATS! You guessed correctly. You have won the game.");
+				break;
+			}
+			else if (number > guess && i != K - 1) {
+				System.out.println("Nope! The secret number is bigger than " + guess);
+			} else if (number < guess && i != K - 1){
+				System.out.println("Nope! The secret number is smaller than " + guess);
+			}
+
+		}
+
+		if (i == K) {
+			System.out.println("Sorry, but you have used up all of your guesses and you did not win the game.");
+
+			System.out.println("The correct number was: " + number);
+
+		}
+		System.out.println("-------------------------------------");
+		System.out.println("Would you like to play again? (Type 1 for yes or 0 for no)");
+		int playAgain = scan.nextInt();
+		if (playAgain == 1) {
+			System.out.println("----------- NEW GAME ----------------");
+			GuessingGame();
+		} else {
+			System.out.println("Goodbye then! Thanks for playing");
+		}
+	}
+
+
+
+	public static void main(String[] args) {
+		GuessingGame();
+	}
+
+}
+
+  </script>
+
+
+
+
+
+  <body>
+
+  </body>
